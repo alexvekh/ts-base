@@ -3,12 +3,16 @@ import "./App.css";
 
 // Generics
 
-type IsFunction<T> = T extends (...args: any[]) => any ? T : null;
+class Box<T> {
+  value: T;
 
-const name = "Jhon";
-const handleChange = () => alert("click");
+  constructor(value: T) {
+    this.value = value;
+  }
+}
 
-const myFunction: IsFunction<typeof handleChange> = handleChange;
+let numberBox = new Box<number>(10);
+let stringBox = new Box<string>("Typestring");
 
 function App() {
   return (
