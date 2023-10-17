@@ -22,7 +22,7 @@ function uppercase(
 class TextProcessor {
   // not support in npm create-react-app --typescript
   // needs other clean progect -
-  @uppercase
+  //@uppercase
   process(text: string): string {
     return text;
   }
