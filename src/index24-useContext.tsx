@@ -4,11 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-// type ProductContextType = {
-//   selectedProductId: number;
-// };
+type ProductContextType = {
+  selectedProductId: number;
+};
 
-// export const ProductContext = createContext<ProductContextType | null>(null);
+export const ProductContext = createContext<ProductContextType | null>(null);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,9 +16,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    {/* <ProductContext.Provider value={{ selectedProductId: 1 }}> */}
-    <App />
-    {/* </ProductContext.Provider> */}
+    <ProductContext.Provider value={{ selectedProductId: 1 }}>
+      <App />
+    </ProductContext.Provider>
   </React.StrictMode>
 );
 
