@@ -1,40 +1,11 @@
 import React, { createContext, useContext } from "react";
 import "./App.css";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
-import { Link } from "react-router-dom";
-
-const Home: React.FC = () => {
-  return (
-    <div className="App-header">
-      <div>
-        <Link className="App-link" to="/dashboard">
-          Dashboard
-        </Link>
-      </div>
-      <div>
-        <Link className="App-link" to="/login">
-          Login
-        </Link>
-      </div>
-    </div>
-  );
-};
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 
 const Login: React.FC = () => {
   const auth = useContext(AuthContext);
-  const navigate = useNavigate();
   const handleClick = () => {
-    if (auth) {
-      auth.login(true);
-      navigate("/dashboard");
-    }
+    if (auth) auth.login(true);
   };
 
   return (
@@ -42,6 +13,10 @@ const Login: React.FC = () => {
       Login
     </div>
   );
+};
+
+const Home: React.FC = () => {
+  return <div className="App-header">Home Page</div>;
 };
 
 const Dashboard: React.FC = () => {
@@ -64,7 +39,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const auth = useContext(AuthContext);
   if (!auth) return <Error />;
-  return auth.isLogged ? <>{children}</> : <Navigate to="/login" replace />;
+  return auth.isLogged ? <>{children}</> : <Login />;
 };
 
 const Profile: React.FC = () => {
